@@ -1,0 +1,31 @@
+9.1 BNF form for extended arithmetic language:
+- 5 + 6 * 3 - 4 / 2
+9.2 BNF form for extended arithmetic language:
+- 5 + 6 * (45 - 3) - 4 / 2
+9.3 Add power (^) to the previous BNF
+- 5^3 + 6 * (45 - 3^2) - 4 / 2
+9.4 Add support of exponents to our BNF form of a number
+- 1.0e-10, -2.71828e-2, 9.81e2
+9.5 Coding: extend our DEMO to support
+    - 9.5.1 Decimals
+    - 9.5.2 MOD operation (%)
+    - 9.5.3 POW operation (^)
+9.6 BNF for part of Python
+- Variable assignment
+- Control structures
+- While-do-end
+- if-else-end
+- Print (the only function call)
+
+Lecture: 
+Expression:
+Structure: <operator> <operand1> <operand2>
+Operator: Must be one of the defined operators: ADD, SUB, MUL, DIV
+Operands: Must be valid integers.
+
+BNF: 
+<operator> :==  
+
+Homework: 
+9.1
+
