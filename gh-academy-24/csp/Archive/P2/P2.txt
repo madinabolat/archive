@@ -1,0 +1,22 @@
+P2 project: 
+- Interpreter for “Simplified Python Language”
+- P2.0 BNF Grammar
+- P2.1 Lexer
+- P2.2 Parser
+- P2.3 Interpreter
+- P2.4* Add support of control structures: (“if”, “while”)
+- No whitespace/tabulation effect
+- No method invocations (‘print’ as a keyword)
+- No class/function definitions
+- No imports/multi files
+
+
+x=5;
+if (x>3) {
+    y = x+2;
+}
+else {    
+    y = x * (2+3);
+}
+end;
+print y;

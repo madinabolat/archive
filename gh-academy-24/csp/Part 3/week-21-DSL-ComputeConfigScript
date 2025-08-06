@@ -1,0 +1,51 @@
+#define configurations
+config "num_users" = 100
+config "request_rate" = 5.5
+config "timeout" = 30
+
+#update configurations
+update "num_users" = 200
+update "request_rate" = 7.5
+
+#perform computations
+compute "total_requests" = %num_users * %request_rate
+compute "total_timeout" = %num_users * %timeout
+
+#show all configurations
+show configs
+
+#loop statement
+loop "i" from 1 to 5 
+  compute "iteration_result_%i" = %num_users * %i 
+end 
+
+#conditional statement
+if %num_users > 1000
+    update "status" = "high load"
+else
+    update "status" = "normal load"
+end
+
+
+BNF: 
+
+<program> ::= <statement> | <program> <statement> 
+<statement> ::= <config_statement> |  <update_statement> |  <compute_statement> | <show_statement>    
+<config_statement> ::= "config" <string> "=" <number>
+<update_statement> ::= "update" <string> "=" <number>
+<compute_statement> ::= "compute" <string> "=" "%" <identifier> <operator> "%" <identifier>
+<show_statement> ::= "show" "configs"   
+<string> ::= \""" <identifier> \"""
+<identifier> ::= <letter> <alphanumeric>*
+<alphanumeric> ::= <letter> | <digit> 
+<number> ::= <digit>+("."<digit>+)?
+<letter> ::= [a-zA-Z]
+<digit> ::= [0-9]
+
++ - one or more times
+* - zero or more times
+? - optional (zero or one time)
+
+HW: 
+1. Implement a Lexer for ComputeConfigScript
+2, 3: Loop, conditional - add to BNF, add to Lexer

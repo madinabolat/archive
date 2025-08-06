@@ -1,0 +1,5 @@
+via terminal
+1. create a folder on your desktop
+2. create a text file in it
+3. open any website and copy its text into your file
+4. replace occurrences of some word into another, save

@@ -1,0 +1,95 @@
+DSL:
+Expression: 
+    Structure: <operator> <operand1> <operand2>
+Operator: 
+    Must be one of the defined operators: ADD, SUB, MUL, DIV
+Operands: 
+    Must be valid integers
+
+
+BNF form: 
+<expression> ::= <operator> <operand> <operand>
+<operator> ::= "ADD" | "SUB" | "MUL" | "DIV"
+<operand> ::= <integer>
+<integer> ::= ["-"] <one_to_nine> { digit } | "0" 
+<one_to_nine> ::= "1" | "2" | "3" | "4"| "5" | "6" | "7"| "8" | "9"
+{digit} ::= "0" | <one_to_nine>
+
+*notes: 
+  integer: -99 to 99 only
+
+
+BNF form of a number: 
+<number> ::= <integer> [<fraction>]
+<integer> ::= ["-"] (<digit> | <nonzero-digit> <digits>)
+<digits> ::= <digit> | <digit> <digits>
+<digit> ::= "0" | <nonzero-digit>
+<nonzero-digit> ::= "1" | "2" | "3" | "4"| "5" | "6" | "7"| "8" | "9"
+<fraction> ::= "." <digits>
+
+
+HW: 
+1. BNF form for extended arithmetic language: 
+5+6*3-4/2
+<expression> ::= <expression> <operator> <term> | <term>
+<term> :: = <operand> <term_operator> <operand>| <operand> 
+<operand> :: = <integer>
+<term_operator> ::= "*" | "/"
+<operator> ::= "+" | "-" 
+<integer> ::= ["-"] <one_to_nine> { digit } | "0" 
+<one_to_nine> ::= "1" | "2" | "3" | "4"| "5" | "6" | "7"| "8" | "9"
+{digit} ::= "0" | <one_to_nine>
+
+2. BNF form for extended arithmetic language:  
+5 + 6 * (45 - 3) - 4 / 2
+<expression> ::= <expression> <operator> <term> | <term>
+<factor> ::= "(" <expression> ")" | <operand>
+<term> :: = <term> <term_operator> <term>| <factor>
+<operand> :: = <integer>
+<term_operator> ::= "*" | "/"
+<operator> ::= "+" | "-" 
+<integer> ::= ["-"] <one_to_nine> { digit } | "0" 
+<one_to_nine> ::= "1" | "2" | "3" | "4"| "5" | "6" | "7"| "8" | "9"
+{digit} ::= "0" | <one_to_nine>
+
+
+3. Add power (^) to the previous BNF
+- 5^3 + 6 * (45 - 3^2) - 4 / 2
+<expression> ::= <expression> <operator> <term> | <term>
+<factor> ::= "(" <expression> ")" | <operand>
+<term> :: = <term> <term_operator> <term>| <factor>
+<operand> :: = <integer> | <integer> "^" <integer>
+<term_operator> ::= "*" | "/"
+<operator> ::= "+" | "-" 
+<integer> ::= ["-"] <one_to_nine> { digit } | "0" 
+<one_to_nine> ::= "1" | "2" | "3" | "4"| "5" | "6" | "7"| "8" | "9"
+{digit} ::= "0" | <one_to_nine>
+
+
+4 Add support of exponents to our BNF form of a number
+1.0e-10, -2.71828e-2, 9.81e2
+<number> ::= <integer> [<fraction>] [<exponential]
+<integer> ::= ["-"] (<digit> | <nonzero-digit> <digits>) 
+<exponential> ::= "e" <integer>
+<digits> ::= <digit> | <digit> <digits>
+<digit> ::= "0" | <nonzero-digit>
+<nonzero-digit> ::= "1" | "2" | "3" | "4"| "5" | "6" | "7"| "8" | "9"
+<fraction> ::= "." <digits>
+
+
+5 Coding: extend our DEMO to support
+Decimals
+MOD operation (%)
+POW operation (^)
+
+
+
+correction after the next class: 
+<expr> ::= <term> | <expr> "+" <term> | <expr> "-" <term>
+<term> ::= <factor> | <term> * <factor> | <term> / <factor>
+<factor> ::= <number> | <power> | "(" <expr> ")"
+<power> ::= <base> "^" <exponent>
+<exponent> ::= <number> | "(" <expression> ")"
+<base> ::= <number> | "(" <expression> ")"
+<number> ::= <digit> | <number> <digit>
+<digit> ::= "0" | "1" | "2" | "3" | "4"| "5" | "6" | "7"| "8" | "9"
